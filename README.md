@@ -50,7 +50,7 @@ For these you'll need to sign up for an Adobe PDF Services account .
 `PDF_SERVICES_CLIENT_SECRET`
 
 
-## API Reference
+# API Reference
 
 
 #### Build Resume
