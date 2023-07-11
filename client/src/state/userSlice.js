@@ -18,7 +18,7 @@ const achievementSchema = {
 };
 const initialState = {
 	template_id: 1,
-	activeIndex:3,
+	activeIndex:1,
 	isLoading:false,
 	personal_information: {
 		name: "",
