@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  font-family: 'Lato', sans-serif;
+  color: rgb(221, 221, 221);
+  transition: all 0.3s;
+}
+
+input {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.40);
+  border-radius: 0.1rem;
+  color: white;
+  padding: 0.3rem;
+}
+
+.form-input-field {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+
+}
+
+.form-input-field>label {
+  font-style: italic;
+  color: #bbbbbb;
+}
+
+.btn {
+  background-color: #ffa003;
+  color: #303f9f;
+  padding: 0.5rem;
+  border-radius: 99rem;
+}
+
+.btn-2 {
+  background-color: #303f9f;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 99rem;
+}
+
+.error-message {
+  color: #ffa1a1;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.jodit-wysiwyg {
+  padding-right: 5px;
+}
+.jodit-ui-input__input {
+  color: #494949 !important;
+}
+/* .react-pdf__Page__textContent.textLayer {
+  display: none;
+}
+
+.react-pdf__Page__annotations.annotationLayer {
+display: none;
+}
+
+.react-pdf__Page__canvas{
+  margin: 0 auto;
+} */

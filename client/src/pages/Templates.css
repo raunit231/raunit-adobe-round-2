@@ -1,0 +1,22 @@
+.template__container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.template__container > img {
+  width: 25%;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .template__container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .template__container > img {
+    width: 70%;
+  }
+  
+}
