@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// necessary reducer and variable for managing state
 const educationSchema = {
 	school_name: "",
 	starting_year: "",

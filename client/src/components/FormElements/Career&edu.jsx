@@ -4,6 +4,10 @@ import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import JoditEditor from "jodit-react";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveIndex, setCareerAndEducationInformation } from "../../state/userSlice";
+/**
+ * Renders the CareerAndEducation component.
+ *
+ */
 function CareerAndEducation() {
   const dispatch = useDispatch();
 	const educationSchema = {
@@ -37,6 +41,15 @@ function CareerAndEducation() {
 		skills: Yup.array().of(Yup.string().required("Skill is required")),
 		education: Yup.array().of(educationValidationSchema),
 	});
+	/**
+	 * Renders an input field with a label, placeholder, and error message.
+	 *
+	 * @param {Object} props - The properties for the input field.
+	 * @param {string} props.label - The label for the input field.
+	 * @param {string} props.name - The name of the input field.
+	 * @param {string} props.placeholder - The placeholder for the input field.
+	 * @return {JSX.Element} The input field component.
+	 */
 	const InputField = ({ label, name, placeholder }) => {
 		return (
 			<div className=" w-full flex flex-col mb-2">
@@ -56,6 +69,11 @@ function CareerAndEducation() {
 		);
 	};
 
+	/**
+	 * Handles the submit event.
+	 *
+	 * @param {object} values - The values submitted by the user.
+	 */
 	const handleSubmit = (values) => {
     dispatch(setCareerAndEducationInformation(values));
     dispatch(setActiveIndex(3));

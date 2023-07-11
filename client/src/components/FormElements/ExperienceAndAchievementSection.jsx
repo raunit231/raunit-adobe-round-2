@@ -11,6 +11,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+
 function ExperienceAndAchievementSection() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -51,6 +52,15 @@ function ExperienceAndAchievementSection() {
 		showPlaceholder: false,
 		placeholder: "Your text here",
 	};
+/**
+ * Renders an input field component.
+ *
+ * @param {Object} props - The props object containing the label, name, and placeholder.
+ * @param {string} props.label - The label for the input field.
+ * @param {string} props.name - The name attribute for the input field.
+ * @param {string} props.placeholder - The placeholder for the input field.
+ * @return {JSX.Element} The rendered input field component.
+ */
 	const InputField = ({ label, name, placeholder }) => {
 		return (
 			<div className=" w-full flex flex-col">
@@ -94,6 +104,14 @@ function ExperienceAndAchievementSection() {
 		skills,
 		education,
 	};
+	/**
+	 * Handles the form submission asynchronously.
+	 * makes a post request to the backend API
+	 * saves the value into finalData variable in the redux store
+	 * and navigates to the next page
+	 * @param {object} values - The values from the form submission.
+	 * 
+	 */
 	const handleSubmit = async (values) => {
 		dispatch(setIsLoading(true));
 		dispatch(setExperienceAndAchievementInformation(values));

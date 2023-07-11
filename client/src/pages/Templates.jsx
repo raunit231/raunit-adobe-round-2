@@ -5,9 +5,17 @@ import { useDispatch } from 'react-redux'
 import { setTemplateId } from '../state/userSlice';
 import { useNavigate } from 'react-router-dom';
 
+/**
+ * The Templates function is a React component that displays a list of templates and allows the user to
+ * select one by clicking on an image.
+ * @returns The Templates component is returning a JSX element.
+ */
 function Templates({templateId}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+ /**
+  * The function redirects to the '/user-info' page after setting the template id.
+  */
   const redirect = (id) => {
     dispatch(setTemplateId(id));
     navigate('/user-info');

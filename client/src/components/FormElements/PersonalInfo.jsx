@@ -4,6 +4,16 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveIndex, setPersonalInformation } from "../../state/userSlice";
 
+/**
+ * Renders a form for entering personal information.
+ *
+ * @param {type} dispatch - a Redux dispatch function
+ * @param {type} initialValues - the initial values for the form fields
+ * @param {type} validationSchema - the validation schema for the form fields
+ * @param {type} InputField - a reusable component for rendering input fields
+ * @param {type} handleSubmit - a function to handle form submission
+ * @return {type} the rendered form component
+ */
 function PersonalInfo() {
 	const dispatch = useDispatch();
 	const initialValues = useSelector(state => state.user.personal_information);

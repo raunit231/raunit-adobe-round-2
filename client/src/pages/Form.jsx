@@ -6,6 +6,8 @@ import ExperienceAndAchievementSection from "../components/FormElements/Experien
 import { useSelector } from "react-redux";
 import Spinner from "../components/Spinner";
 
+/* The `UserForm` function is a React component that renders a form based on the value of `activeIndex`
+and `isLoading` variables. */
 function UserForm() {
   const activeIndex = useSelector(state => state.user.activeIndex);
 	const isLoading = useSelector(state => state.user.isLoading);

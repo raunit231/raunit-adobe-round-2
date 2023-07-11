@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-
+// Pdf viewer element
 
 function PDFViewer() {
+	// getting the final data from the backend api saved in redux 
 	const pdfData = useSelector(state => state.user.finalData);
 
 	return (
@@ -15,25 +16,3 @@ function PDFViewer() {
 
 export default PDFViewer;
 
-
-
-
-
-	// const [numPages, setNumPages] = useState(null);
-
-	// function onDocumentLoadSuccess({ numPages }) {
-	// 	setNumPages(numPages);
-	// }
-  // const MobileView = () => {
-	// 	return (
-	// 		<Document file={pdfData} onLoadSuccess={onDocumentLoadSuccess}>
-	// 			{Array.from(new Array(numPages), (el, index) => (
-	// 				<Page
-	// 					key={`page_${index + 1}`}
-	// 					pageNumber={index + 1}
-	// 					className="pdf-page"
-	// 				/>
-	// 			))}
-	// 		</Document>
-	// 	);
-	// }
