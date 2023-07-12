@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useRef }  from "react";
 import JoditEditor from "jodit-react";
 import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import {
+	setActiveIndex,
 	setExperienceAndAchievementInformation,
 	setFinalData,
 	setIsLoading,
@@ -15,6 +16,7 @@ import axios from "axios";
 function ExperienceAndAchievementSection() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const mainElementRef = useRef(null);
 	const experienceSchema = {
 		company_name: "",
 		starting_year: "",
@@ -152,10 +154,18 @@ function ExperienceAndAchievementSection() {
 		navigate("/pdfviewer");
 
 	};
+		const handlePrevious = () => {
+			const element = mainElementRef.current;
+			element.classList.remove("enter-animation");
+			element.classList.add("exit-animation");
+			setTimeout(() => {
+				element.classList.remove("exit-animation");
+				dispatch(setActiveIndex(2));
+			}, 300);
+		};
 	return (
 		<>
-				
-			<div className={`w-[70%] h-full py-10  mx-auto relative`}>
+			<div className={`w-[70%] h-full py-10  mx-auto relative enter-animation`} ref={mainElementRef}>
 				<Formik
 					onSubmit={handleSubmit}
 					initialValues={initialValues}
@@ -301,7 +311,15 @@ function ExperienceAndAchievementSection() {
 										)}
 									</FieldArray>
 								</div>
-								<div className="flex justify-center pt-4 pb-8">
+								<div className="flex justify-center space-x-[10%] pt-4 pb-8">
+									<button
+										className="btn w-[70%]"
+										style={{ backgroundColor: "#00a3bf", color: "#fff" }}
+										type="button"
+										onClick={handlePrevious}
+									>
+										Go Back
+									</button>
 									<button className="btn w-[70%]" type="submit">
 										Submit Details
 									</button>

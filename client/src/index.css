@@ -72,3 +72,32 @@ display: none;
 .react-pdf__Page__canvas{
   margin: 0 auto;
 } */
+
+
+.exit-animation {
+  animation: exit 0.3s forwards   ;
+}
+
+.enter-animation {
+  animation: enter 0.3s forwards;
+}
+
+
+@keyframes enter {
+  0% {
+    opacity: 0;
+  } 
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes exit {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+

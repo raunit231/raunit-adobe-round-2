@@ -1,4 +1,4 @@
-import React from "react";
+import React, {  useRef } from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import JoditEditor from "jodit-react";
@@ -10,6 +10,7 @@ import { setActiveIndex, setCareerAndEducationInformation } from "../../state/us
  */
 function CareerAndEducation() {
   const dispatch = useDispatch();
+	const mainElementRef = useRef(null);
 	const educationSchema = {
 		school_name: "",
 		starting_year: "",
@@ -76,11 +77,29 @@ function CareerAndEducation() {
 	 */
 	const handleSubmit = (values) => {
     dispatch(setCareerAndEducationInformation(values));
-    dispatch(setActiveIndex(3));
+		const element = mainElementRef.current;
+		element.classList.remove("enter-animation");
+		element.classList.add("exit-animation");
+    setTimeout(() => {
+			element.classList.remove("exit-animation");
+			dispatch(setActiveIndex(3));
+		}, 300);
 	};
+	// handles the previous event
+	const handlePrevious = () => {
+		const element = mainElementRef.current;
+		element.classList.remove("enter-animation")
+		element.classList.add("exit-animation");
+		setTimeout(() => {
+			element.classList.remove("exit-animation");
+			dispatch(setActiveIndex(1));
+		}, 300);
+	}
+
 	return (
 		<div
-			className={`w-[70%] py-10  mx-auto h-full`}
+			ref={mainElementRef}
+			className={`w-[70%] py-10  mx-auto h-full enter-animation career-and-edu`}
 		>
 			<Formik
 				onSubmit={handleSubmit}
@@ -204,7 +223,10 @@ function CareerAndEducation() {
 											)}
 										</FieldArray>
 
-										<div className="flex justify-center pt-4 pb-8">
+										<div className="flex space-x-[10%] justify-center pt-4 pb-8">
+											<button className="btn w-[70%]" style={{"backgroundColor" : "#00a3bf","color" : "#fff"}} type="button" onClick={handlePrevious} >
+												Previous
+											</button>
 											<button className="btn w-[70%]" type="submit">
 												Next
 											</button>

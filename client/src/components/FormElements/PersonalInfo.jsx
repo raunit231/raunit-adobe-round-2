@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +15,7 @@ import { setActiveIndex, setPersonalInformation } from "../../state/userSlice";
  * @return {type} the rendered form component
  */
 function PersonalInfo() {
+	const mainElementRef = useRef(null);
 	const dispatch = useDispatch();
 	const initialValues = useSelector(state => state.user.personal_information);
 	const validationSchema = Yup.object({
@@ -40,12 +41,19 @@ function PersonalInfo() {
 		);
   }
 	const handleSubmit = (values) => {
+		const element = mainElementRef.current;
+		element.classList.remove("enter-animation");
+		element.classList.add("exit-animation");
 		dispatch(setPersonalInformation(values));
-		dispatch(setActiveIndex(2));
+		setTimeout(() => {
+			element.classList.remove("exit-animation");
+			dispatch(setActiveIndex(2));
+		}, 300);
   };
 	return (
 		<div
-			className={`w-[70%] h-full py-10  mx-auto`}
+		ref={mainElementRef}
+			className={`w-[70%] h-full py-10  mx-auto enter-animation`}
 		>
 			<h1 className="text-lg mb-5">Personal Details</h1>
 			<Formik
